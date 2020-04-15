@@ -1,6 +1,9 @@
 FROM python:3.8
 MAINTAINER hxc
 
+ENV TZ=Asia/Shanghai
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+
 RUN apt-get update && apt-get install -y \
     supervisor \
 && rm -rf /var/lib/apt/lists/*
